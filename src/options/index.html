@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>klsv — ustawienia</title>
+    <link rel="stylesheet" href="../ui/theme.css" />
+    <link rel="stylesheet" href="./options.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+          <rect width="48" height="48" rx="14" fill="#234036" />
+          <circle cx="24" cy="24" r="16" fill="#f4f0e6" />
+          <circle cx="24" cy="20" r="2.2" fill="#b86145" />
+          <path d="M12 27h24" stroke="#234036" stroke-width="1.7" stroke-linecap="round" />
+          <path d="M16 31h16" stroke="#234036" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+        <div>
+          <h1 class="word">klsv</h1>
+          <p class="sub">klidnější svět</p>
+        </div>
+      </header>
+      <p class="lead" data-copy="lead">
+        Chowa z feedu ragebait, toksyczność, panikę, clickbait, spam i tekst, który brzmi jak generator.
+        W to miejsce kładzie krótką ciekawostkę. Ramka wpisu zostaje tam, gdzie była.
+      </p>
+      <p class="tiny muted">
+        <span data-copy="note">Nie chowa poglądów. Chowa haczyk, obelgę, panikę, reklamę i generator. Pokaż oryginał pamięta wpis do odświeżenia karty. Zostaw autora zostaje tutaj. Skrót:</span>
+        <strong id="shortcut">…</strong>
+      </p>
+
+      <section class="panel stack">
+        <div class="row">
+          <h2 data-copy="enabled">włączone</h2>
+          <button id="enabled" class="switch" type="button" role="switch" aria-checked="true" aria-label="Włącz klsv">
+            <span></span>
+          </button>
+        </div>
+        <div class="row">
+          <span data-copy="uiLanguage">język interfejsu</span>
+          <div id="ui-lang" class="segment" role="radiogroup">
+            <button type="button" data-ui="pl" role="radio">polski</button>
+            <button type="button" data-ui="cs" role="radio">čeština</button>
+          </div>
+        </div>
+        <div class="row">
+          <span data-copy="dark">ciemny motyw</span>
+          <button id="dark" class="switch" type="button" role="switch" aria-checked="false" aria-label="Ciemny motyw">
+            <span></span>
+          </button>
+        </div>
+        <div class="row">
+          <span data-copy="sensitivity">czułość</span>
+          <strong id="sensitivity-label">średnia</strong>
+        </div>
+        <input id="sensitivity" type="range" min="0" max="100" step="1" value="58" aria-label="Czułość" />
+        <p id="threshold" class="tiny muted"></p>
+        <div id="modes" class="segment" role="radiogroup" aria-label="Sposób ukrywania"></div>
+        <p id="mode-hint" class="tiny muted"></p>
+        <label class="check">
+          <input id="show-reason" type="checkbox" />
+          <span>
+            <strong data-copy="reasonTitle">podpisuj, dlaczego schowane</strong>
+            <small data-copy="reasonHint">Cichy nagłówek nad ciekawostką. Bez tego zostaje samo „klsv”.</small>
+          </span>
+        </label>
+        <label class="check">
+          <span>
+            <strong data-copy="factLanguage">język ciekawostek</strong>
+            <small data-copy="factHint">Dotyczy tekstu w miejsce wpisu. Interfejs przełączasz osobno.</small>
+          </span>
+        </label>
+        <div id="language" class="segment" role="radiogroup" aria-label="Język ciekawostek">
+          <button type="button" data-lang="pl" role="radio">polski</button>
+          <button type="button" data-lang="en" role="radio">english</button>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="panel">
+          <h2 data-copy="hideWhat">co chować</h2>
+          <div id="categories"></div>
+        </div>
+        <div class="panel stack">
+          <h2 data-copy="where">gdzie</h2>
+          <div id="sites" class="chips"></div>
+          <p class="tiny muted" data-copy="sitesNote">X, Reddit, Facebook, Instagram, Threads, YouTube, LinkedIn, TikTok i Bluesky.</p>
+        </div>
+      </section>
+
+      <section class="grid">
+        <label class="panel stack">
+          <h2 data-copy="allowTitle">zawsze pokazuj</h2>
+          <textarea id="allow" spellcheck="true" data-copy-placeholder="allowPlaceholder" placeholder="jedna fraza w linii, co najmniej 3 znaki"></textarea>
+          <span class="tiny muted" data-copy="allowHint">Ma pierwszeństwo. Krótkie słowo przepuści pół feedu.</span>
+        </label>
+        <label class="panel stack">
+          <h2 data-copy="blockTitle">zawsze chowaj</h2>
+          <textarea id="block" spellcheck="true" data-copy-placeholder="blockPlaceholder" placeholder="jedna fraza w linii"></textarea>
+          <span class="tiny muted" data-copy="blockHint">Działa nawet przy wyłączonych kategoriach.</span>
+        </label>
+      </section>
+
+      <section class="panel stack">
+        <h2 data-copy="authorsTitle">autorzy, których zostawiam</h2>
+        <textarea id="authors" spellcheck="false" data-copy-placeholder="authorsPlaceholder" placeholder="nick albo imię, jedno w linii"></textarea>
+        <p class="tiny muted" data-copy="authorsHint">Na Facebooku imię bywa niestabilne. Na X i Bluesky lepiej zostawić nick.</p>
+      </section>
+
+      <section class="panel stack">
+        <h2 data-copy="aiTitle">AI</h2>
+        <p class="tiny muted" data-copy="aiBody">
+          Słownik łapie znane frazy od razu, bez sieci. Model w przeglądarce czyta resztę wpisów, po polsku i po angielsku.
+          Jeśli Chrome ma już swój model, użyje jego. Inaczej pobierze raz około 130 MB i zostawi je u siebie. Na serwer idą tylko wagi, nie treść wpisu.
+        </p>
+        <div class="row">
+          <span data-copy="neural">model w przeglądarce</span>
+          <button id="neural" class="switch" type="button" role="switch" aria-checked="true" aria-label="Model w przeglądarce">
+            <span></span>
+          </button>
+        </div>
+        <div class="row">
+          <span data-copy="embedded">dopasowanie fraz</span>
+          <button id="embedded" class="switch" type="button" role="switch" aria-checked="true" aria-label="Lekki model w wtyczce">
+            <span></span>
+          </button>
+        </div>
+        <div class="row">
+          <span data-copy="cloud">większy model obok, opcjonalnie</span>
+          <button id="cloud-enabled" class="switch" type="button" role="switch" aria-checked="false" aria-label="Włącz model na komputerze">
+            <span></span>
+          </button>
+        </div>
+        <p class="tiny muted" data-copy="cloudBody">
+          To Ollama albo LM Studio na tym komputerze, na przykład qwen2.5:0.5b. Klucz zostaw pusty.
+          Dostaje tylko wpisy blisko progu. Zdalny adres https też przejdzie, jeśli wkleisz klucz.
+        </p>
+        <label class="stack">endpoint<input id="endpoint" type="url" autocomplete="off" spellcheck="false" /></label>
+        <label class="stack">model<input id="model" type="text" autocomplete="off" spellcheck="false" /></label>
+        <label class="stack">
+          <span data-copy="key">klucz</span>
+          <span class="split">
+            <input id="api-key" type="password" autocomplete="off" spellcheck="false" />
+            <button id="show-key" class="ghost" type="button" data-copy="show">pokaż</button>
+          </span>
+        </label>
+        <p class="tiny muted" data-copy="keyHint">Klucz zostaje w lokalnym magazynie tej przeglądarki. Eksport go nie zabiera.</p>
+        <div class="actions samples">
+          <button id="test-cloud" class="solid" type="button" data-copy="test">sprawdź połączenie</button>
+          <span id="cloud-result" class="tiny muted"></span>
+        </div>
+      </section>
+
+      <section class="panel stack">
+        <h2 data-copy="playground">plac zabaw</h2>
+        <p class="tiny muted" data-copy="playgroundHint">Wklej wpis. Werdykt liczy się tutaj, na twoich aktualnych ustawieniach. Do sieci nic nie idzie.</p>
+        <div id="samples" class="samples"></div>
+        <textarea id="draft" data-copy-placeholder="draftPlaceholder" placeholder="wklej wpis…"></textarea>
+        <p id="decision"></p>
+        <div id="score-list" class="scores"></div>
+        <div id="reasons" class="reasons"></div>
+        <div class="plate">
+          <p id="preview-kicker" class="kicker">klsv</p>
+          <p id="preview-body" data-copy="previewEmpty">Tu pojawi się ciekawostka, którą dostałby ten wpis.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 data-copy="stats">statystyki</h2>
+        <p class="tiny muted"><span data-copy="since">od początku</span>: <strong id="all-time">0</strong> · <span data-copy="today">dziś</span>: <strong id="today-total">0</strong></p>
+        <div id="days" class="days"></div>
+        <ul id="hosts" class="hosts"></ul>
+        <p id="empty-stats" class="tiny muted" data-copy="emptyStats">jeszcze pusto. feed sam się dziś zachowuje.</p>
+      </section>
+
+      <section class="panel samples">
+        <button id="export" class="ghost" type="button" data-copy="export">eksport ustawień</button>
+        <button id="import" class="ghost" type="button" data-copy="import">import</button>
+        <input id="import-file" type="file" accept="application/json" hidden />
+        <button id="reset" class="ghost" type="button" data-copy="reset">wyczyść wszystko</button>
+        <span id="save-state" class="tiny muted"></span>
+      </section>
+    </main>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

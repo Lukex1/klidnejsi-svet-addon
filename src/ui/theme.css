@@ -1,0 +1,210 @@
+:root {
+  color-scheme: light;
+  --paper: #f3efe4;
+  --paper-2: #faf7f1;
+  --ink: #1c1914;
+  --muted: #5c564c;
+  --line: #e0d6c6;
+  --moss: #234036;
+  --moss-2: #3e6b54;
+  --clay: #b86145;
+  --sun: #ead7ae;
+  --field: #fffdf9;
+  --segment: #efe8db;
+  --switch-off: #d9d0c2;
+  --on-ink: #f4f0e6;
+  --glow: #efe2c8;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: "Segoe UI", "Helvetica Neue", sans-serif;
+  --shadow: 0 16px 40px rgba(48, 36, 18, 0.08);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #141210;
+  --paper-2: #1e1b16;
+  --ink: #f4efe6;
+  --muted: #b5aa9a;
+  --line: #3c362c;
+  --moss: #d7e4d8;
+  --moss-2: #8fb89a;
+  --clay: #e39a84;
+  --sun: #3a3226;
+  --field: #262219;
+  --segment: #2a261f;
+  --switch-off: #3d382f;
+  --on-ink: #142018;
+  --glow: #2a2418;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background:
+    radial-gradient(900px 280px at 0% -10%, var(--glow) 0%, transparent 55%),
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+button, input, textarea { font: inherit; color: inherit; }
+
+button { cursor: pointer; }
+
+:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 2px;
+}
+
+.mark { width: 42px; height: 42px; display: block; flex: none; }
+
+.word {
+  font-family: var(--serif);
+  font-weight: 560;
+  font-size: 28px;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0;
+}
+
+.sub {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.panel {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+h2 {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 560;
+  margin: 0 0 8px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.muted { color: var(--muted); }
+.tiny { font-size: 12px; line-height: 1.4; }
+
+.check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+}
+
+.check:first-child { border-top: 0; }
+
+.check input { margin-top: 3px; accent-color: var(--moss); }
+
+.check span { display: flex; flex-direction: column; gap: 2px; }
+
+.check small { color: var(--muted); font-size: 12px; }
+
+.chip {
+  border: 1px solid var(--line);
+  background: transparent;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--moss);
+  border-color: var(--moss);
+  color: var(--on-ink);
+}
+
+.switch {
+  width: 46px;
+  height: 28px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--switch-off);
+  position: relative;
+  padding: 0;
+  flex: none;
+}
+
+.switch span {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: white;
+  transition: transform 160ms ease;
+}
+
+.switch[aria-checked="true"] { background: var(--moss-2); }
+.switch[aria-checked="true"] span { transform: translateX(18px); }
+
+.segment {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--segment);
+}
+
+.segment button {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  border-radius: 999px;
+  padding: 6px 8px;
+  font-size: 13px;
+}
+
+.segment button[aria-checked="true"] {
+  background: var(--paper-2);
+  box-shadow: 0 1px 0 rgba(40, 30, 16, 0.08);
+}
+
+input[type="range"] { width: 100%; accent-color: var(--moss); }
+
+textarea, input[type="text"], input[type="password"], input[type="url"] {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: var(--field);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+textarea { min-height: 88px; resize: vertical; }
+
+.ghost, .solid {
+  border-radius: 999px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  background: transparent;
+}
+
+.solid {
+  background: var(--moss);
+  color: var(--on-ink);
+  border-color: var(--moss);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switch span { transition: none; }
+}

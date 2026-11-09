@@ -1,0 +1,19 @@
+{
+  "name": "klsv",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun run build.ts",
+    "dev": "bun run build.ts --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/chrome": "^0.3.7",
+    "typescript": "^7"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.3.2"
+  }
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>klsv</title>
+    <link rel="stylesheet" href="../ui/theme.css" />
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+          <rect width="48" height="48" rx="14" fill="#234036" />
+          <circle cx="24" cy="24" r="16" fill="#f4f0e6" />
+          <circle cx="24" cy="20" r="2.2" fill="#b86145" />
+          <path d="M12 27h24" stroke="#234036" stroke-width="1.7" stroke-linecap="round" />
+          <path d="M16 31h16" stroke="#234036" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+        <div class="grow">
+          <h1 class="word">klsv</h1>
+          <p class="sub">klidnější svět</p>
+        </div>
+        <button id="enabled" class="switch" type="button" role="switch" aria-checked="true" data-copy-label="enabledLabel" aria-label="Włącz klsv">
+          <span></span>
+        </button>
+      </header>
+
+      <section class="panel stack">
+        <p id="status" class="status" data-copy="loading">ładowanie…</p>
+        <div class="stats">
+          <span data-copy="hiddenOnTab">ukryte na karcie</span>
+          <strong id="count">—</strong>
+        </div>
+        <div id="badges" class="badges"></div>
+        <p id="model-status" class="tiny muted">model ruszy na pierwszym wpisie</p>
+        <div class="row">
+          <span data-copy="uiLanguage">język interfejsu</span>
+          <div id="ui-lang" class="segment" role="radiogroup" aria-label="język interfejsu">
+            <button type="button" data-ui="pl" role="radio">polski</button>
+            <button type="button" data-ui="cs" role="radio">čeština</button>
+          </div>
+        </div>
+        <div class="row">
+          <span data-copy="dark">ciemny motyw</span>
+          <button id="dark" class="switch" type="button" role="switch" aria-checked="false" data-copy-label="darkLabel" aria-label="Ciemny motyw">
+            <span></span>
+          </button>
+        </div>
+        <p id="hint" class="tiny muted" data-copy="hintInject" hidden>ta karta była otwarta przed wtyczką. uruchom ją tutaj albo odśwież stronę.</p>
+        <div class="actions">
+          <button id="pause" class="ghost" type="button">pauza na tej karcie</button>
+          <button id="inject" class="solid" type="button" hidden>uruchom tutaj</button>
+        </div>
+      </section>
+
+      <section class="panel stack">
+        <div class="row">
+          <span data-copy="sensitivity">czułość</span>
+          <strong id="sensitivity-label">średnia</strong>
+        </div>
+        <input id="sensitivity" type="range" min="0" max="100" step="1" value="58" aria-label="Czułość" />
+        <p id="threshold" class="tiny muted"></p>
+        <div id="modes" class="segment" role="radiogroup" aria-label="Sposób ukrywania"></div>
+      </section>
+
+      <section class="panel">
+        <h2 data-copy="hideWhat">co chować</h2>
+        <div id="categories"></div>
+      </section>
+
+      <section class="panel stack">
+        <h2 data-copy="where">gdzie</h2>
+        <div id="sites" class="chips"></div>
+      </section>
+
+      <footer>
+        <span><span data-copy="todayHidden">dziś ukryte</span>: <strong id="today">0</strong></span>
+        <button id="options" class="ghost" type="button" data-copy="settings">ustawienia</button>
+      </footer>
+    </main>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
